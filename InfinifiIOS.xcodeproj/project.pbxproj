@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F12B73452C55505E0064A230 /* NeuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B73442C55505E0064A230 /* NeuButton.swift */; };
+		F12B73472C55AC6B0064A230 /* PlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B73462C55AC6B0064A230 /* PlaybackManager.swift */; };
+		F12B73492C55C0C40064A230 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F12B73482C55C0C40064A230 /* .gitignore */; };
 		F13839702C51BABD00B4814F /* InfinifiIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F138396F2C51BABD00B4814F /* InfinifiIOSApp.swift */; };
 		F13839722C51BABD00B4814F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13839712C51BABD00B4814F /* ContentView.swift */; };
 		F13839742C51BABE00B4814F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13839732C51BABE00B4814F /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F12B73442C55505E0064A230 /* NeuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuButton.swift; sourceTree = "<group>"; };
+		F12B73462C55AC6B0064A230 /* PlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackManager.swift; sourceTree = "<group>"; };
+		F12B73482C55C0C40064A230 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		F138396C2C51BABD00B4814F /* InfinifiIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinifiIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F138396F2C51BABD00B4814F /* InfinifiIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinifiIOSApp.swift; sourceTree = "<group>"; };
 		F13839712C51BABD00B4814F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +61,9 @@
 				F13839712C51BABD00B4814F /* ContentView.swift */,
 				F13839732C51BABE00B4814F /* Assets.xcassets */,
 				F13839752C51BABE00B4814F /* Preview Content */,
+				F12B73442C55505E0064A230 /* NeuButton.swift */,
+				F12B73462C55AC6B0064A230 /* PlaybackManager.swift */,
+				F12B73482C55C0C40064A230 /* .gitignore */,
 			);
 			path = InfinifiIOS;
 			sourceTree = "<group>";
@@ -126,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F13839772C51BABE00B4814F /* Preview Assets.xcassets in Resources */,
+				F12B73492C55C0C40064A230 /* .gitignore in Resources */,
 				F13839742C51BABE00B4814F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12B73452C55505E0064A230 /* NeuButton.swift in Sources */,
 				F13839722C51BABD00B4814F /* ContentView.swift in Sources */,
+				F12B73472C55AC6B0064A230 /* PlaybackManager.swift in Sources */,
 				F13839702C51BABD00B4814F /* InfinifiIOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +287,7 @@
 				DEVELOPMENT_TEAM = 5FG7YZ49ZA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = infinifi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +317,7 @@
 				DEVELOPMENT_TEAM = 5FG7YZ49ZA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = infinifi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

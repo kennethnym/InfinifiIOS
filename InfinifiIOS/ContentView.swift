@@ -1,21 +1,48 @@
-//
-//  ContentView.swift
-//  InfinifiIOS
-//
-//  Created by Kenneth on 24/07/2024.
-//
-
+import AVKit
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+    @ObservedObject private var playbackManager = PlaybackManager()
+
+    private func toggleAudioPlayback() {
+        switch playbackManager.playbackState {
+        case .playing:
+            playbackManager.stop()
+        case .paused:
+            playbackManager.nextTrack()
         }
-        .padding()
+    }
+
+    var body: some View {
+        let buttonImageName = switch playbackManager.playbackState {
+        case .paused: "play"
+        case .playing: "pause"
+        }
+
+        VStack(alignment: .center) {
+            Text("infinifi")
+                .font(.title3)
+                .bold()
+                .monospaced()
+                .padding()
+
+            Spacer()
+
+            NeuButton(action: {
+                toggleAudioPlayback()
+            }) {
+                Image(systemName: buttonImageName)
+                    .font(.system(size: 24))
+                    .tint(.text)
+            }
+
+            Spacer()
+        }
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: .infinity
+        )
+        .background(.base)
     }
 }
 
