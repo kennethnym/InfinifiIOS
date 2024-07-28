@@ -24,9 +24,8 @@ struct ContentView: View {
 
         VStack(alignment: .center) {
             Text("infinifi")
-                .font(.title3)
-                .bold()
-                .monospaced()
+                .font(.system(.title3, design: .monospaced))
+                .fontWeight(.bold)
                 .padding()
 
             Spacer()
