@@ -20,6 +20,7 @@ struct ContentView: View {
         case .paused: "play"
         case .playing: "pause"
         case .loading: "dot.square"
+        default: ""
         }
 
         VStack(alignment: .center) {
@@ -30,12 +31,14 @@ struct ContentView: View {
 
             Spacer()
 
-            NeuButton(action: {
-                toggleAudioPlayback()
-            }) {
-                Image(systemName: buttonImageName)
-                    .font(.system(size: 24))
-                    .tint(.text)
+            if playbackManager.playbackState != .initializing {
+                NeuButton(action: {
+                    toggleAudioPlayback()
+                }) {
+                    Image(systemName: buttonImageName)
+                        .font(.system(size: 24))
+                        .tint(.text)
+                }
             }
 
             Spacer()

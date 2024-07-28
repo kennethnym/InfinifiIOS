@@ -5,10 +5,11 @@ enum PlaybackState {
     case playing
     case paused
     case loading
+    case initializing
 }
 
 class PlaybackManager: ObservableObject {
-    @Published var playbackState: PlaybackState = .paused
+    @Published var playbackState: PlaybackState = .initializing
     @Published var hasError = false
 
     private var audioPlayer = AVPlayer()
@@ -16,10 +17,15 @@ class PlaybackManager: ObservableObject {
     private var fadeOutTimer: Timer?
     private var scheduledFadeOutTimer: Timer?
 
+    init() {
+        Task { try await initialize() }
+    }
+
     func nextTrack() {
         playbackState = .loading
         Task {
-            try await loadAndPlayNextTrack()
+            try await loadNextTrack()
+            await playCurrentTrack()
             await MainActor.run {
                 playbackState = .playing
             }
@@ -37,7 +43,15 @@ class PlaybackManager: ObservableObject {
         audioPlayer.pause()
     }
 
-    private nonisolated func loadAndPlayNextTrack() async throws {
+    private func initialize() async throws {
+        try await loadNextTrack()
+
+        await MainActor.run {
+            playbackState = .paused
+        }
+    }
+
+    private nonisolated func loadNextTrack() async throws {
         let now = Date().timeIntervalSince1970
         guard let url = URL(string: "https://infinifi.cafe/current.mp3?t=\(now)") else {
             return
@@ -56,8 +70,10 @@ class PlaybackManager: ObservableObject {
         audioPlayer.volume = 0.0
 
         audioPlayer.replaceCurrentItem(with: playerItem)
-        await audioPlayer.play()
+    }
 
+    private nonisolated func playCurrentTrack() async {
+        await audioPlayer.play()
         DispatchQueue.main.async {
             self.fadeInAudio()
             self.scheduledFadeOutTimer = Timer.scheduledTimer(withTimeInterval: 55, repeats: false) { _ in
