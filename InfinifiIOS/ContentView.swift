@@ -10,6 +10,8 @@ struct ContentView: View {
             playbackManager.stop()
         case .paused:
             playbackManager.nextTrack()
+        default:
+            break
         }
     }
 
@@ -17,6 +19,7 @@ struct ContentView: View {
         let buttonImageName = switch playbackManager.playbackState {
         case .paused: "play"
         case .playing: "pause"
+        case .loading: "dot.square"
         }
 
         VStack(alignment: .center) {
