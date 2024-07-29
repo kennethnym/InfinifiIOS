@@ -2,8 +2,8 @@ import Combine
 import Foundation
 import SwiftUI
 
-let effectRadius = 100
-let minDotRadius = 1
+let effectRadius: Float = 100
+let minDotRadius: Float = 1
 
 struct DottedBackground: View {
     @State private var isDragging = false
@@ -34,16 +34,17 @@ struct DottedBackground: View {
         Canvas { ctx, size in
             for y in stride(from: 0, to: Int(size.height), by: 10) {
                 for x in stride(from: 0, to: Int(size.width), by: 10) {
-                    let radius: Int
+                    let radius: CGFloat
                     if isDragging {
-                        let distanceFromTouch = Int(sqrt(pow(Float(x) - touchX, 2) + pow(Float(y) - touchY, 2)))
-                        radius = minDotRadius + minDotRadius * 4 * (effectRadius - min(effectRadius, distanceFromTouch)) / 100
+                        let distanceFromTouch = sqrt(pow(Float(x) - touchX, 2) + pow(Float(y) - touchY, 2))
+                        let howCloseToOrigin: Float = (effectRadius - min(effectRadius, distanceFromTouch)) / 100
+                        radius = CGFloat(minDotRadius + minDotRadius * 2 * howCloseToOrigin)
                     } else {
-                        radius = minDotRadius
+                        radius = CGFloat(minDotRadius)
                     }
 
                     ctx.fill(
-                        Path(ellipseIn: CGRect(x: x, y: y, width: radius * 2, height: radius * 2)),
+                        Path(ellipseIn: CGRect(origin: CGPoint(x: x, y: y), size: CGSizeMake(radius * 2, radius * 2))),
                         with: .color(.surface1)
                     )
                 }
