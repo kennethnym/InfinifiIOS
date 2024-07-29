@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import SwiftUI
 
@@ -8,6 +9,9 @@ struct DottedBackground: View {
     @State private var isDragging = false
     @State private var touchX: Float = 0
     @State private var touchY: Float = 0
+    @State private var hapticsCooldownTimer: Timer?
+
+    private let impactGenerator = UIImpactFeedbackGenerator(style: .soft)
 
     var body: some View {
         let dragGesture = DragGesture(minimumDistance: 0)
@@ -15,6 +19,13 @@ struct DottedBackground: View {
                 isDragging = true
                 touchX = Float(value.location.x)
                 touchY = Float(value.location.y)
+
+                if hapticsCooldownTimer == nil {
+                    impactGenerator.impactOccurred()
+                    hapticsCooldownTimer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: false) { _ in
+                        self.hapticsCooldownTimer = nil
+                    }
+                }
             }
             .onEnded { _ in
                 isDragging = false
