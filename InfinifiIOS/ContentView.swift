@@ -2,7 +2,7 @@ import AVKit
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var playbackManager = PlaybackManager()
+    @StateObject private var playbackManager = PlaybackManager()
 
     private func toggleAudioPlayback() {
         switch playbackManager.playbackState {
@@ -42,6 +42,10 @@ struct ContentView: View {
             }
 
             Spacer()
+
+            LiveListenerCounter(
+                playbackManager: playbackManager
+            )
         }
         .frame(
             maxWidth: .infinity,
