@@ -12,6 +12,7 @@
 		F12B73492C55C0C40064A230 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F12B73482C55C0C40064A230 /* .gitignore */; };
 		F12B734B2C56AEB00064A230 /* LiveStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B734A2C56AEB00064A230 /* LiveStatusManager.swift */; };
 		F12B734D2C5702EC0064A230 /* LiveListenerCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B734C2C5702EC0064A230 /* LiveListenerCounter.swift */; };
+		F12B73502C57BDD90064A230 /* DottedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B734F2C57BDD90064A230 /* DottedBackground.swift */; };
 		F13839702C51BABD00B4814F /* InfinifiIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F138396F2C51BABD00B4814F /* InfinifiIOSApp.swift */; };
 		F13839722C51BABD00B4814F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13839712C51BABD00B4814F /* ContentView.swift */; };
 		F13839742C51BABE00B4814F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13839732C51BABE00B4814F /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		F12B734A2C56AEB00064A230 /* LiveStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStatusManager.swift; sourceTree = "<group>"; };
 		F12B734C2C5702EC0064A230 /* LiveListenerCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListenerCounter.swift; sourceTree = "<group>"; };
 		F12B734E2C57B0230064A230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F12B734F2C57BDD90064A230 /* DottedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedBackground.swift; sourceTree = "<group>"; };
 		F138396C2C51BABD00B4814F /* InfinifiIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinifiIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F138396F2C51BABD00B4814F /* InfinifiIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinifiIOSApp.swift; sourceTree = "<group>"; };
 		F13839712C51BABD00B4814F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				F12B73482C55C0C40064A230 /* .gitignore */,
 				F12B734A2C56AEB00064A230 /* LiveStatusManager.swift */,
 				F12B734C2C5702EC0064A230 /* LiveListenerCounter.swift */,
+				F12B734F2C57BDD90064A230 /* DottedBackground.swift */,
 			);
 			path = InfinifiIOS;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				F12B734D2C5702EC0064A230 /* LiveListenerCounter.swift in Sources */,
 				F13839722C51BABD00B4814F /* ContentView.swift in Sources */,
 				F12B73472C55AC6B0064A230 /* PlaybackManager.swift in Sources */,
+				F12B73502C57BDD90064A230 /* DottedBackground.swift in Sources */,
 				F13839702C51BABD00B4814F /* InfinifiIOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

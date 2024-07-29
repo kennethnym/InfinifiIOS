@@ -1,4 +1,3 @@
-import AVKit
 import SwiftUI
 
 struct ContentView: View {
@@ -29,28 +28,41 @@ struct ContentView: View {
         default: ""
         }
 
-        VStack(alignment: .center) {
-            Text("infinifi")
-                .font(.system(.title3, design: .monospaced))
-                .fontWeight(.bold)
-                .padding()
+        ZStack {
+            DottedBackground()
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity
+                )
+                .ignoresSafeArea()
 
-            Spacer()
+            VStack(alignment: .center) {
+                Text("infinifi")
+                    .font(.system(.title3, design: .monospaced))
+                    .fontWeight(.bold)
+                    .padding()
 
-            if playbackManager.playbackState != .initializing {
-                NeuButton(action: {
-                    toggleAudioPlayback()
-                }) {
-                    Image(systemName: buttonImageName)
-                        .font(.system(size: 24))
-                        .tint(.text)
+                Spacer()
+
+                if playbackManager.playbackState != .initializing {
+                    NeuButton(action: {
+                        toggleAudioPlayback()
+                    }) {
+                        Image(systemName: buttonImageName)
+                            .font(.system(size: 24))
+                            .tint(.text)
+                    }
                 }
+
+                Spacer()
+
+                LiveListenerCounter(
+                    playbackManager: playbackManager
+                )
             }
-
-            Spacer()
-
-            LiveListenerCounter(
-                playbackManager: playbackManager
+            .frame(
+                maxWidth: .infinity,
+                maxHeight: .infinity
             )
         }
         .frame(
