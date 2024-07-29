@@ -24,6 +24,7 @@
 		F12B73482C55C0C40064A230 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		F12B734A2C56AEB00064A230 /* LiveStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStatusManager.swift; sourceTree = "<group>"; };
 		F12B734C2C5702EC0064A230 /* LiveListenerCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveListenerCounter.swift; sourceTree = "<group>"; };
+		F12B734E2C57B0230064A230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F138396C2C51BABD00B4814F /* InfinifiIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinifiIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F138396F2C51BABD00B4814F /* InfinifiIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinifiIOSApp.swift; sourceTree = "<group>"; };
 		F13839712C51BABD00B4814F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		F138396E2C51BABD00B4814F /* InfinifiIOS */ = {
 			isa = PBXGroup;
 			children = (
+				F12B734E2C57B0230064A230 /* Info.plist */,
 				F138396F2C51BABD00B4814F /* InfinifiIOSApp.swift */,
 				F13839712C51BABD00B4814F /* ContentView.swift */,
 				F13839732C51BABE00B4814F /* Assets.xcassets */,
@@ -295,6 +297,7 @@
 				DEVELOPMENT_TEAM = 5FG7YZ49ZA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InfinifiIOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = infinifi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -326,6 +329,7 @@
 				DEVELOPMENT_TEAM = 5FG7YZ49ZA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InfinifiIOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = infinifi;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

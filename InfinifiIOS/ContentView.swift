@@ -10,6 +10,12 @@ struct ContentView: View {
             playbackManager.stop()
         case .paused:
             playbackManager.nextTrack()
+            Task {
+                // sleep for 100ms before configuring audio session and control
+                // to prevent UI stutter
+                try await Task.sleep(nanoseconds: 100_000_000)
+                playbackManager.confiugureAudioSessionAndControls()
+            }
         default:
             break
         }

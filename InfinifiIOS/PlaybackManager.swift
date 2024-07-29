@@ -1,5 +1,6 @@
 import AVKit
 import Foundation
+import MediaPlayer
 
 enum PlaybackState {
     case playing
@@ -19,6 +20,35 @@ class PlaybackManager: ObservableObject {
 
     init() {
         Task { try await initialize() }
+    }
+
+    func confiugureAudioSessionAndControls() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.playback, mode: .default)
+            try audioSession.setActive(true)
+        } catch {}
+
+        NotificationCenter.default.addObserver(self, selector: #selector(onAudioInterrupted), name: AVAudioSession.interruptionNotification, object: audioSession)
+
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyTitle: "infinite lo-fi music",
+            MPMediaItemPropertyArtist: "infinifi"
+        ]
+
+        let cmdCenter = MPRemoteCommandCenter.shared()
+
+        cmdCenter.playCommand.isEnabled = true
+        cmdCenter.playCommand.addTarget { _ in
+            self.nextTrack()
+            return .success
+        }
+
+        cmdCenter.pauseCommand.isEnabled = true
+        cmdCenter.pauseCommand.addTarget { _ in
+            self.stop()
+            return .success
+        }
     }
 
     func nextTrack() {
@@ -79,6 +109,38 @@ class PlaybackManager: ObservableObject {
             self.scheduledFadeOutTimer = Timer.scheduledTimer(withTimeInterval: 55, repeats: false) { _ in
                 self.fadeOutAudio()
             }
+        }
+    }
+
+    @objc
+    private func onAudioInterrupted(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let interruptionType = AVAudioSession.InterruptionType(rawValue: typeValue)
+        else {
+            return
+        }
+
+        switch interruptionType {
+        case .began:
+            DispatchQueue.main.async {
+                self.stop()
+            }
+
+        case .ended:
+            guard let optionValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else {
+                return
+            }
+
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionValue)
+            if options.contains(.shouldResume) {
+                DispatchQueue.main.async {
+                    self.nextTrack()
+                }
+            }
+
+        @unknown default:
+            break
         }
     }
 
