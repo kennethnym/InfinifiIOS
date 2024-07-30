@@ -37,8 +37,8 @@ struct NeuButton<Content>: View where Content: View {
             Rectangle()
                 .fill(isPressed ? .base : .text)
                 .offset(
-                    x: isPressed ? 0 : 4,
-                    y: isPressed ? 0 : 4
+                    x: isPressed ? 0 : 3,
+                    y: isPressed ? 0 : 3
                 )
                 .overlay {
                     ZStack {
@@ -51,10 +51,9 @@ struct NeuButton<Content>: View where Content: View {
                 }
         }
         .border(.text, width: 2)
-        .frame(width: 64, height: 64)
         .offset(
-            x: isPressed ? 6 : 0,
-            y: isPressed ? 6 : 0
+            x: isPressed ? 5 : 0,
+            y: isPressed ? 5 : 0
         )
         .buttonStyle(NeuButtonStyle { isPressed in
             self.isPressed = isPressed

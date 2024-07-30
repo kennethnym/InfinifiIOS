@@ -37,10 +37,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
 
             VStack(alignment: .center) {
-                Text("infinifi")
-                    .font(.system(.title3, design: .monospaced))
-                    .fontWeight(.bold)
-                    .padding()
+                TitleBar()
 
                 Spacer()
 
@@ -52,6 +49,7 @@ struct ContentView: View {
                             .font(.system(size: 24))
                             .tint(.text)
                     }
+                    .frame(width: 64, height: 64)
                 }
 
                 Spacer()
