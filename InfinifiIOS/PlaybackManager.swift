@@ -18,6 +18,8 @@ class PlaybackManager: ObservableObject {
     private var fadeOutTimer: Timer?
     private var scheduledFadeOutTimer: Timer?
 
+    private var miloArtwork = UIImage(named: "Milo0")
+
     init() {
         Task { try await initialize() }
     }
@@ -31,10 +33,18 @@ class PlaybackManager: ObservableObject {
 
         NotificationCenter.default.addObserver(self, selector: #selector(onAudioInterrupted), name: AVAudioSession.interruptionNotification, object: audioSession)
 
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+        var nowPlayInfo: [String: Any] = [
             MPMediaItemPropertyTitle: "infinite lo-fi music",
-            MPMediaItemPropertyArtist: "infinifi"
+            MPMediaItemPropertyArtist: "infinifi",
+            MPNowPlayingInfoPropertyIsLiveStream: true,
         ]
+        if let milo = miloArtwork {
+            nowPlayInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: milo.size) { _ in
+                milo
+            }
+        }
+
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayInfo
 
         let cmdCenter = MPRemoteCommandCenter.shared()
 
